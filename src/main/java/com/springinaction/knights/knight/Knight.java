@@ -1,4 +1,4 @@
-package com.springinaction.knights;
+package com.springinaction.knights.knight;
 
 /**
  * @author DW
