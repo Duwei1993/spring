@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     <bean id="knight" class="com.springinaction.knights.knight.imp.BraveKnight">
-        <constructor-arg ref="quest"/>
+        <constructor-arg index="0" ref="quest"/>
     </bean>
     <bean id="quest" class="com.springinaction.knights.quest.imp.SlayDragonQuest">
-        <constructor-arg value="#{T(System).out}" />
+        <constructor-arg value="#{T(System).out}"/>
     </bean>
+    <!-- 声明 minstrel bean -->
+    <bean id="minstrel" class="com.springinaction.knights.minstrel.Minstrel">
+        <constructor-arg value="#{T(System).out}"/>
+    </bean>
+    <aop:config>
+        <aop:aspect ref="minstrel">
+            <!-- 定义切点 -->
+            <aop:pointcut id="embark" expression="execution(* *.embarkOnQuest(..))"/>
+            <!-- 声明前置通知  -->
+            <aop:before method="singBeforeQuest" pointcut-ref="embark"/>
+            <!-- 申明后置通知 -->
+            <aop:after method="singAfterQuest" pointcut-ref="embark"/>
+        </aop:aspect>
+    </aop:config>
+
 </beans>

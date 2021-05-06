@@ -21,6 +21,5 @@ public class BraveKnightTest {
         knight.embarkOnQuest();
         //关闭上下文
         context.close();
-
     }
 }
