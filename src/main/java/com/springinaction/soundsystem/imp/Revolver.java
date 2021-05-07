@@ -1,17 +1,19 @@
 package com.springinaction.soundsystem.imp;
 
 import com.springinaction.soundsystem.CompactDisc;
+import com.springinaction.soundsystem.MediaPlayer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-//@Component("lonelyHeartClub")
+@Component
 //@Named("lonelyHeartClub") 建议使用@Component
-@Component("lonelyHeartClub")
-public class SgtPeppers implements CompactDisc {
-    private String title = "Sgt.Peppers's Lonely Hearts Club Band";
+public class Revolver implements CompactDisc {
+    private String title = "Revolver";
     private String artist = "The Beatles";
 
     @Override
     public void paly() {
         System.out.println("Playing " + title + "by " + artist);
     }
+
 }

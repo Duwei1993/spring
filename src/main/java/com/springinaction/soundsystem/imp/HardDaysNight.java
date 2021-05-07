@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 //@Component("lonelyHeartClub")
 //@Named("lonelyHeartClub") 建议使用@Component
-@Component("lonelyHeartClub")
-public class SgtPeppers implements CompactDisc {
-    private String title = "Sgt.Peppers's Lonely Hearts Club Band";
+@Component("HardDaysNight")
+public class HardDaysNight implements CompactDisc {
+    private String title = "HardDaysNight";
     private String artist = "The Beatles";
 
     @Override
